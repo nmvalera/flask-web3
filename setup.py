@@ -33,6 +33,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         'web3>=4.4.0',
+        'flask>=1.0.0',
     ],
     extras_require={
         'dev': [
@@ -40,6 +41,7 @@ setup(
             'autoflake',
             'autopep8',
             'coverage',
+            "eth-tester[py-evm]==0.1.0-beta.26",
             'pytest>=3',
             'tox',
             'sphinx',
