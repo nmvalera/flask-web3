@@ -9,7 +9,12 @@
     :license: BSD, see :ref:`license` for more details.
 """
 
+from .extension import FlaskWeb3
+from .locals import current_web3
 
 __version__ = '0.1.0-dev'
 
-__all__ = []
+__all__ = [
+    'FlaskWeb3',
+    'current_web3',
+]
