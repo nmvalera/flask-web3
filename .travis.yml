@@ -1,0 +1,43 @@
+stages:
+  - test
+  - name: release
+    if: tag IS present
+
+sudo: false
+os: linux
+
+language: python
+
+cache: pip
+
+install:
+  - pip install tox
+
+script: tox
+
+jobs:
+  include:
+    - stage: test
+      python: 3.5
+      env: TOXENV=py,codecov
+    - stage: test
+      python: 3.6
+      env: TOXENV=py,codecov
+    - stage: test
+      python: 3.6
+      env: TOXENV=lint
+    - stage: test
+      python: 3.6
+      env: TOXENV=docs
+    - stage: release
+      python: 3.6
+      install: skip
+      script: skip
+      deploy:
+        provider: pypi
+        user: nmvalera
+        distributions: sdist bdist_wheel
+        on:
+          tags: true
+        password:
+          secure: QK5cCu/A16O/0X0VpTykFi/b7OrUBTj06Pq7uOFdaP6RfZfdF4fc20nJq32iWjb7CA4rqVFgpVhgg9z42Tnp1Eudqyj6DCbopkYbUMxidfuKkhuAN4PCMiWzchmCmAUxg1PUeglvEs73oWGEOmHHBTG7yY6TU7Qs2IFwYBz9inK9estzCtgXU6mJFi1f+wywN3qmSl2TQYZLjXQiiiN2aAuA/h0S8mmhYmebobFJOh5Cwy4SpO2N+UEk/8mr68Qn+uGLUCFPRM+CcruiN+Mk7eX4AGtooyphT8kLdfYJfAuoBs5P7/0r9DfKEYM76plJhMJaPS2fODRMGdlWQzyJzx046Dk50VqgUXhHIAu2C3Cne05aCamypbKk3zwph8E3eABT/Xt6L2BiOIZTH/Te04Nqf0vZ3OO8M2tJib1vXUdWpFDy3M4pzTiVesph9LyvV3BolE0pk0+tFY4h3cY1wqq7zi07ntBmwQmCIVRfc2aXla5/QYX9wJZ+7Zwhg8MGwW5Ypf7avLLI65OoZfpOFKFHvpKTOwgy1J/5wqSVyFmBNexeHqL5hR/3gXauRvd4aYFau5nP9lLYEOk8eIrQrp9xuUtQ9pXVdmhUtZT+e40HPHb1VBE3Seb/lTosIexMBDoYbmsnCIkYrlvzbeA4CGBx94/QqjsgYSPBOiCw0wY=

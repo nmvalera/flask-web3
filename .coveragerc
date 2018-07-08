@@ -1,0 +1,13 @@
+[run]
+branch=True
+source=flask_web3
+
+[report]
+precision=2
+exclude_lines =
+    pragma: no cover
+    raise NotImplementedError
+
+[html]
+directory=htmlcov
+title=Flask-Web3 coverage Report

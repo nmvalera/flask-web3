@@ -1,0 +1,8 @@
+include AUTHORS CHANGES.rst LICENSE README.rst
+
+recursive-include tests *
+recursive-include docs *
+
+global-exclude *.py[co]
+
+prune docs/_build
