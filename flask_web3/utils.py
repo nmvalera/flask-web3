@@ -4,10 +4,10 @@ from .config import ETHEREUM_PROVIDER, ETHEREUM_OPTS, ETHEREUM_ENDPOINT_URI, ETH
 
 
 def create_provider(config):
-    """Create a web3.py provider based on information in application config
+    """Create a web3.py provider
 
-    :param app:
-    :type app: Flask application object
+    :param config: Provider configuration
+    :type config: dict
     """
     provider, opts = config.get('ETHEREUM_PROVIDER', ETHEREUM_PROVIDER), config.get('ETHEREUM_OPTS', ETHEREUM_OPTS)
 

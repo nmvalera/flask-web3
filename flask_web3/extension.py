@@ -33,8 +33,15 @@ class FlaskWeb3Meta(type):
 
 
 class FlaskWeb3(metaclass=FlaskWeb3Meta):
-    """Main class for declaring a flask extension"""
+    """Main class for declaring a flask extension
 
+    :param app: Flask application or blueprint object to extend
+    :type app: flask.Flask
+    :param create_provider: Function used to create a Web3 provider
+    :type create_provider: A function taking a :class:flask.Flask application configuration as parameter
+    """
+
+    # Web3 class to use for
     web3_class = Web3
 
     def __init__(self, *args, app=None, create_provider=_create_provider, **kwargs):
@@ -43,15 +50,15 @@ class FlaskWeb3(metaclass=FlaskWeb3Meta):
         if app:
             self.init_app(app)
 
-    def set_config(self, app):
-        self.config = app.config
-
     def init_app(self, app):
-        """Initialize application"""
+        """Initialize application
+
+        :param app: Flask application or blueprint object to extend
+        :type app: flask.Flask
+        """
 
         # Create a provider
-        self.set_config(app)
-        self.providers = self.create_provider(self.config)
+        self.providers = self.create_provider(app.config)
 
         # Attached the extension to the app
         app.web3 = self
