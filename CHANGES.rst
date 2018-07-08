@@ -3,10 +3,19 @@ Changelog
 
 Here you can see the full list of changes between each releases of Flask-Web3.
 
+Version 0.1.1
+-------------
+
+Released on July 8th 2018
+
+Fix
+
+- Travis deployment password
+
 Version 0.1.0
 -------------
 
-Released on July 8th 2018.
+Released on July 8th 2018
 
 Features
 

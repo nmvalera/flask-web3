@@ -22,7 +22,7 @@ def read(file_name):
 
 setup(
     name='Flask-Web3',
-    version='0.1.0',
+    version='0.1.1',
     license=read('LICENSE'),
     url='https://github.com/nmvalera/flask-web3',
     author='Nicolas Maurice',

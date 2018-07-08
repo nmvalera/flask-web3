@@ -12,7 +12,7 @@
 from .extension import FlaskWeb3
 from .locals import current_web3
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 __all__ = [
     'FlaskWeb3',
